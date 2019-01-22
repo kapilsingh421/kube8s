@@ -1,16 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: rsvp
-  namespace: testing-jsayar
-  labels:
-    apps: rsvp
+  name: node-service
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
-  - name: tcp-31081-8888
-    nodePort: 31081
-    port: 8888
+  - name: node-service
+    port: 80
     protocol: TCP
+    targetPort: 3000
   selector:
-    app: rsvp
+    app: nodeapp

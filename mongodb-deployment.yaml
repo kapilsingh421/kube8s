@@ -1,20 +1,17 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: rsvp-db
-  namespace: testing-jsayar
+  name: mongodb
 spec:
-  replicas: 1
   template:
     metadata:
       labels:
-        appdb: rsvpdb
+        app: mongodb
     spec:
       containers:
-      - name: rsvpd-db
+      - name: mongodb
         image: mongo
-        env:
-        - name: MONGODB_DATABASE
-          value: rsvpdata
         ports:
-        - containerPort: 27017
+        - name: mongodbport
+          containerPort: 27017
+          protocol: TCP
